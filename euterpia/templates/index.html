@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euterpia - Explore New Places</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Euterpia!</h1>
+    <p>Start exploring amazing places!</p>
+    
+    <div class="places">
+        <h2>Nearby Places:</h2>
+        <ul>
+            {% for place in places %}
+                <li>
+                    <h3>{{ place['name'] }}</h3>
+                    <p>{{ place['vicinity'] }}</p>
+                    <p>Rating: {{ place.get('rating', 'No rating available') }}</p>
+                </li>
+            {% else %}
+                <li>No places found nearby.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
