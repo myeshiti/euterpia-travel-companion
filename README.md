@@ -6,12 +6,12 @@ Euterpia is a smart web application that helps users discover exciting places ar
 
 ## Features
 
-- 📍 **Auto Geolocation**: Detects user's current location automatically.
-- 🧭 **Nearby Places Discovery**: Fetches and displays nearby places from multiple categories (restaurants, malls, bars, etc.).
-- ⭐ **Favorites System**: Users can save and toggle favorite places (stored via `localStorage`).
-- 🔍 **Search & Sort**: Filter places by name and sort by rating or name.
-- 🗺️ **Live Map Embeds**: Each place includes an interactive map preview.
-- ⚡ **Responsive Design**: Fully mobile-friendly UI with Bootstrap and custom CSS.
+- **Auto Geolocation**: Detects user's current location automatically.
+- **Nearby Places Discovery**: Fetches and displays nearby places from multiple categories (restaurants, malls, bars, etc.).
+- **Favorites System**: Users can save and toggle favorite places (stored via `localStorage`).
+- **Search & Sort**: Filter places by name and sort by rating or name.
+- **Live Map Embeds**: Each place includes an interactive map preview.
+- **Responsive Design**: Fully mobile-friendly UI with Bootstrap and custom CSS.
 
 ---
 
@@ -59,17 +59,18 @@ euterpia/
    python euterpia/app.py
 4. **Visit in your browser**
    http://127.0.0.1:5000
+
 Future Improvements
-User accounts and login system
+- User accounts and login system
 
-Reviews & comments integration
-Add direction & route planning
-Upload user-generated photos
-Deploy to mobile via PWA (Progressive Web App)
-Host live with a custom domain
+- Reviews & comments integration
+- Add direction & route planning
+- Upload user-generated photos
+- Deploy to mobile via PWA (Progressive Web App)
+- Host live with a custom domain
 
 
-Author
+**Author**
 Mousse Yeshitila
 Bachelor of Science in Information Science
 University of Maryland
