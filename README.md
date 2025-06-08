@@ -71,8 +71,9 @@ Future Improvements
 
 
 **Author**
+```
 Mousse Yeshitila
 Bachelor of Science in Information Science
 University of Maryland
-
+```
 
