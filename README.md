@@ -34,13 +34,14 @@ _(You can host the app with Render or Vercel and link it here.)_
 ## 📂 Project Structure
 
 euterpia/
-├── app.py # Flask backend
+├── app.py                  # Flask backend
 ├── static/
-│ ├── styles.css # Custom CSS
-│ └── euterpia.png # Background image
+│   ├── styles.css          # Custom CSS
+│   └── euterpia.png        # Background image
 ├── templates/
-│ └── index.html # Frontend HTML (rendered by Flask)
-└── README.md # You're here!
+│   └── index.html          # Frontend HTML (rendered by Flask)
+└── README.md               # You're here!
+
 
 ---
 
