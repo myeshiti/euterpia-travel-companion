@@ -1,35 +1,63 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 
 app = Flask(__name__)
 
 # Google Maps API key
-API_KEY = 'AIzaSyDhLJgnVNsblOFh6BinWumITpCvVcDiF1w'  # Replace with your actual API key
+API_KEY = 'AIzaSyAh8sROh894xBQPCGbQTlHhiHUh4hPpcz8'
 
-# Function to fetch places from Google Maps API
-def get_places(location, radius=1000):
-    # Base URL for the Places API
-    url = f'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={location}&radius={radius}&key={API_KEY}'
-    
-    # Send a request to Google Maps API
-    response = requests.get(url)
-    
-    # Parse the JSON response
-    data = response.json()
-    
-    # Check if the API call is successful
-    if data['status'] == 'OK':
-        return data['results']
-    else:
-        return []
+def get_places_nearby(lat, lng, radius=2000):
+    place_types = [
+        "restaurant", "shopping_mall", "amusement_park", "bowling_alley",
+        "cafe", "bar", "movie_theater", "night_club", "tourist_attraction",
+        "hotels"
+    ]
+    all_results = []
+    for t in place_types:
+        token = None
+        while True:
+            params = {
+                "location": f"{lat},{lng}",
+                "radius": radius,
+                "type": t,
+                "key": API_KEY
+            }
+            if token:
+                params["pagetoken"] = token
 
-@app.route('/')
+            resp = requests.get(
+                "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+                params=params
+            )
+            data = resp.json()
+            if data.get("status") != "OK":
+                break
+
+            all_results.extend(data["results"])
+            token = data.get("next_page_token")
+            if not token:
+                break
+
+    # dedupe by place_id
+    unique = {p["place_id"]: p for p in all_results}
+    return list(unique.values())
+
+@app.route("/")
 def home():
-    # Default location (latitude, longitude for College Park, MD as an example)
-    location = "38.9866,-76.9378"  # This is a default location; you can modify it to get location from user
-    places = get_places(location)  # Fetch places based on location
-    return render_template('index.html', places=places)
+    # just serve the page — we'll load places via JS
+    return render_template("index.html")
 
-if __name__ == '__main__':
+@app.route("/get_places", methods=["POST"])
+def get_places():
+    payload = request.get_json()
+    lat = payload.get("lat")
+    lng = payload.get("lng")
+    places = get_places_nearby(lat, lng)
+    return jsonify(places=places)
+
+if __name__ == "__main__":
     app.run(debug=True)
+
+
+
 

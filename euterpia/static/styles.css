@@ -1,14 +1,129 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #f1f1f1;
+    overflow-x: hidden;
+}
+
+/* Background image layer */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/static/euterpia.png") center center / cover no-repeat fixed;
+    z-index: -2;
+}
+
+/* Dark overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+    z-index: -1;
+}
+
+/* Custom header styling */
+header.bg-teal {
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header p.lead {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Places container */
+.places h2 {
+    font-size: 1.8rem;
+    color: #fefefe;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent for blend */
+    color: #222;
+}
+
+.card:hover {
+    transform: scale(1.015);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    color: #e76f51;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-title i {
+    margin-right: 0.5rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
     color: #333;
-    text-align: center;
 }
 
-h1 {
-    color: #2a9d8f;
+.card-text i {
+    margin-right: 0.5rem;
 }
 
-p {
-    font-size: 18px;
+/* Spinner styling */
+#loadingSpinner {
+    padding: 2rem;
 }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p.lead {
+        font-size: 1rem;
+    }
+
+    .places h2 {
+        font-size: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+}
+
