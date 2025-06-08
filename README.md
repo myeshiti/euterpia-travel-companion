@@ -32,7 +32,7 @@ _(You can host the app with Render or Vercel and link it here.)_
 ---
 
 ## 📂 Project Structure
-
+```
 euterpia/
 ├── app.py                  # Flask backend
 ├── static/
@@ -41,8 +41,7 @@ euterpia/
 ├── templates/
 │   └── index.html          # Frontend HTML (rendered by Flask)
 └── README.md               # You're here!
-
-
+```
 ---
 
 ## Setup & Run Locally
